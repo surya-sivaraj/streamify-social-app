@@ -11,12 +11,15 @@ router.post('/logout',logout)
 router.post("/onboarding",protectRoute,onboard)
 
 // check if athenticated or not 
-router.get("/me",protectRoute,(req,res)=>{
-    res.status(200).json({
-        success:true,
-        user:req.user
-    })
-})
+router.get("/me", protectRoute, (req, res) => {
+  const userResponse = { ...req.user._doc };
+  delete userResponse.password;
+
+  res.status(200).json({
+    success: true,
+    user: userResponse,
+  });
+});
 
 
 
