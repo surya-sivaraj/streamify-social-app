@@ -55,7 +55,7 @@ export async function signup(req, res) {
 
     const token = jwt.sign(
       { userId: newUser._id },
-      process.env.JWT_SECRET_kEY,
+      process.env.JWT_SECRET_KEY,
       { expiresIn: '30d' }
     );
 
@@ -96,7 +96,7 @@ export async function login(req, res) {
 
      const token = jwt.sign(
       { userId: user._id },
-      process.env.JWT_SECRET_kEY,
+      process.env.JWT_SECRET_KEY,
       { expiresIn: '30d' }
     );
 
